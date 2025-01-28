@@ -1,43 +1,46 @@
 class Solution {
 public:
     int pivotIndex(vector<int>& nums) {
-//         int n=nums.size(); 
-//         int sum=0;
-//         int dum=0;
-//         int i=0;
-//         int temp=0;
-//         int j=n-1;
-
-//         while(i<j){
-//             sum=sum+nums[i];
-//             dum=dum+nums[j];
-//             if(sum>dum){
-//                 j--;
-//             }
-//             else if(dum>sum){
-//                 i++;
-//             }
-//             else if(sum==dum){
-//                  temp= i+1;
-//             }
-//             else{
-//                 temp=-1;
-//             }     
-//    }
-//     return temp;
-
-             int right_sum = accumulate(nums.begin(),nums.end(),0); 
-		//accumulate(first, last, sum) ,i.e sum : initial value of the sum
-        int left_sum = 0;
-        for(int i = 0;i < nums.size();i++){
-            right_sum -= nums[i];
-            if(left_sum == right_sum){
-                return i;
+        int n=nums.size();
+        int i=0,j=n-1;
+        int ans=-1;
+        while(i<j){
+            if(nums[i]<nums[j]){
+                i++;
+                nums[i]+=nums[i-1];
             }
-            left_sum += nums[i];
+            else if(nums[i]>nums[j]){
+                j--;
+                nums[j]+=nums[j+1];
+
+            }
+            if(nums[i]==nums[j]){
+                ans=i;
+                i++;
+                j--;
+            }
         }
-        return -1;
+        if(i==n-1) return -1;
+        else if(ans==0) return 0;
+        else return ans+1;
 
 
+
+        // for(int i=1;i<n;i++){
+        //     nums[i]+=nums[i-1];
+        // }
+        // int ans=-1;
+        // for(int i=0;i<n;i++){
+        //     if(nums[n-1]-nums[i]==(nums[n-1]/2)-1){
+        //         ans= i;
+        //     }
+        //     else if(nums[n-1]-nums[i]<0){
+        //         ans= 0;
+        //     }
+
+        // }
+        // return ans;
+        
+        
     }
 };
