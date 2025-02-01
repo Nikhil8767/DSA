@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isArraySpecial(vector<int>& nums) {
+        int n=nums.size();
+        int count=1;
+        for(int i=0;i<n-1;i++){
+            if(nums[i]%2==0 && nums[i+1]%2==0){
+                return false;
+            }
+            else if(nums[i]%2!=0 && nums[i+1]%2!=0){
+                return false;
+            }
+        }
+        return true;
+
+        // for(int i=0;i<n-1;i++){
+        //     if(nums[i]%2!=0 && nums[i]%2==0){
+        //         count++;
+        //     }
+        //     else if(nums[i]%2==0 && nums[i+1]%2!=0){
+        //         count++;
+        //     }
+        // }
+        // if(count==n) return true;
+        // else return false;
+    }
+};
