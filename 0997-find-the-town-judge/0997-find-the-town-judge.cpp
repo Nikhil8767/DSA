@@ -13,7 +13,7 @@ public:
             indegree[v]++;
 
         }
-        for(int i=0;i<=n;i++){
+        for(int i=1;i<=n;i++){
             if(indegree[i]==n-1 && outdegree[i]==0){
                 return i;
             }
